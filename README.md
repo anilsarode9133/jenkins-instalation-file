@@ -7,3 +7,13 @@ sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sour
 sudo apt-get update -y
 sudo apt-get install jenkins -y
 sudo systemctl status jenkins
+
+
+TOMCAT USERNAME AND ROLES CONFIGURATION
+ <role rolename="manager-gui"/>
+ <role rolename="manager-script"/>
+ <role rolename="manager-jmx"/>
+ <role rolename="managerstatus"/>
+ <user username="admin" password="admin" roles="mager-gui, manager-script, manager-jmx, manager-status"/>
+ <user username="deployer" password="deployer" roles="manager-srcipt"/>
+ <user username="tomcat"  password="s3cret" roles="manager-gui"/>
