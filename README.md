@@ -8,8 +8,28 @@ sudo apt-get update -y
 sudo apt-get install jenkins -y
 sudo systemctl status jenkins
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-TOMCAT USERNAME AND ROLES CONFIGURATION
+TOMCAT INSTALLATION
+ sudo apt-get update -y
+ wget [paste copied link]                       #copy tomcat8 tar file link from google
+ tar -xvzf [tarfile]                            #need to untar tar file
+ cd tomcat folder                               # we doo all setup in this folder 
+ cd bin                                         #need to install java in this configuration folder
+   sudo apt-get install openjdk-8*                
+   ./shutdown.sh
+   ./startup.sh                                   #need to restart service if any changes done
+ now you copy ip and paste in browser:8080
+ *to change port number
+ cd conf                                         #To change port number 
+ vi server.xml                                   #in this file change connector port number
+ cd bin 
+   ./sutdown.sh
+   ./startup.sh                                  #service resstart
+ *if you login through manager app shows 403 denied because in context .xml file have error
+    find / -name context.xml                     #shows 4files path need to go inside and disable valve class name <!-- *** -- >
+    ./sutdown.sh
+    ./startup.sh                                 # restart service
+ * To give credentials                              
+ TOMCAT USERNAME AND ROLES CONFIGURATION         #copy text and past in cd conf tomcat-user.xml file
  <role rolename="manager-gui"/>
  <role rolename="manager-script"/>
  <role rolename="manager-jmx"/>
@@ -17,6 +37,9 @@ TOMCAT USERNAME AND ROLES CONFIGURATION
  <user username="admin" password="admin" roles="mager-gui, manager-script, manager-jmx, manager-status"/>
  <user username="deployer" password="deployer" roles="manager-srcipt"/>
  <user username="tomcat"  password="s3cret" roles="manager-gui"/>
+
+cd conf
+ vi tomcat-user.xml                             #paste that credentials and restart service in cd bin 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
