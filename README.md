@@ -54,7 +54,7 @@ vi /etc/sudoers                   #give root permisions to user :wq!
 yum install java11-openjdk-devel  #need to install java to connect master
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-ansible main setup
+ansible main setup     [amazzon-linux]
 
 yum update -y
 yum install python                #because ansible developed in python
